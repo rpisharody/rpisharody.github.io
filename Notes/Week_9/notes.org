@@ -1,0 +1,43 @@
+#+TITLE: Notes from Week 9, Machine Learning, Andrew Ng
+#+Author: Rahul Pisharody
+#+STARTUP: entitiespretty latexpreview
+#+LATEX_HEADER: \usepackage{mathbb}
+#+LATEX_HEADER: \usepackage{mathcal}
+
+* Anomaly Detection
+** Density Estimation
+   Given a non-anomalous dataset, {x^{(1)}, x^{(2)}, ..., x^{(m)}}, is x_{test} anomalous ?
+   We create a model p(x), 
+   if p(x_{test}) <= \epsilon, Flag as an anomaly
+   if p(x_{test}) > \epsilon, Flag as ok
+   Some common applications include Fraud Detection, with the Dataset being the usage patterns
+   of the user, *manufacturing*, *monitoring computers in a data center*
+** Gaussian Distribution
+   Also called the /Normal Distribution/, the Gaussian distribution is the 
+   familiar bell-shaped curve that can be described by \(\mathcal{N}(\mu, \sigma^2)\).
+
+   Let \(x \in \mathbb{R}\). If the probability distribution of \(x\) is 
+   Gaussian, with a mean of \mu and variance of \sigma^2, then:
+   \begin{equation}
+   x \sim \mathcal{N}(\mu, \sigma^2)
+   \end{equation}
+   The probability distribution can be calculated as
+   \begin{equation}
+   p(x;\mu, \sigma^2) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+   \end{equation}
+   The mean of the distribution, \mu decides where the bell-curve is centered. The
+   variance, \sigma^2 denotes the width or the sharpness of the distribution. A
+   distribution with a wider width will have larger \sigma^2. Intuitively, the 
+   variance is a measure of how far away from the mean the distribution is
+   clustered.
+
+   Given a distribution \(x\), 
+   \begin{equation}
+   \mu = \frac{1}{m}\sum_{i = 1}^{m}x^{(i)}
+   \end{equation}
+   and
+   \begin{equation}
+   \sigma^2 = \frac{1}{m}\sum_{i=1}^{m}(x^{(i)} - \mu)^{2}
+   \end{equation}
+** Algorithm for Anomaly Detection
+   
